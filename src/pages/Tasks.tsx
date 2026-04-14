@@ -81,6 +81,12 @@ const Tasks: React.FC = () => {
               <h2 className="text-2xl font-black">Tasks</h2>
               <p className="text-sm text-gray-500">Complete tasks to earn coins instantly</p>
             </div>
+            <div className="flex flex-col items-end">
+              <Badge variant="outline" className="text-[8px] uppercase tracking-widest border-primary/20 text-primary/60 bg-primary/5">
+                AdMob Connected
+              </Badge>
+              <span className="text-[8px] text-gray-400 mt-1 font-mono">ID: ...8178</span>
+            </div>
           </div>
           <TabsList className="grid w-full grid-cols-2 bg-gray-100/50 p-1 rounded-xl">
             <TabsTrigger value="available" className="rounded-lg font-bold data-[state=active]:bg-white data-[state=active]:shadow-sm">

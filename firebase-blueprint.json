@@ -1,0 +1,64 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "User profile and balance information",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "email": { "type": "string", "format": "email" },
+        "displayName": { "type": "string" },
+        "photoURL": { "type": "string" },
+        "coins": { "type": "number" },
+        "referralCode": { "type": "string" },
+        "referredBy": { "type": "string" },
+        "dailyStreak": { "type": "number" },
+        "lastLogin": { "type": "string", "format": "date-time" },
+        "totalEarned": { "type": "number" },
+        "tasksCompleted": { "type": "number" }
+      },
+      "required": ["uid", "coins"]
+    },
+    "Notification": {
+      "title": "Notification",
+      "description": "User notifications for rewards and system updates",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "title": { "type": "string" },
+        "message": { "type": "string" },
+        "type": { "type": "string", "enum": ["task", "bonus", "withdrawal", "system"] },
+        "read": { "type": "boolean" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["userId", "title", "message", "type", "read", "createdAt"]
+    },
+    "TaskHistory": {
+      "title": "TaskHistory",
+      "description": "History of completed tasks by users",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "taskId": { "type": "string" },
+        "taskTitle": { "type": "string" },
+        "reward": { "type": "number" },
+        "completedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["userId", "taskId", "taskTitle", "reward", "completedAt"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "User documents"
+    },
+    "/notifications/{notificationId}": {
+      "schema": "Notification",
+      "description": "Notification documents"
+    },
+    "/taskHistory/{historyId}": {
+      "schema": "TaskHistory",
+      "description": "Task history documents"
+    }
+  }
+}
